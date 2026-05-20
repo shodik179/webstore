@@ -1,12 +1,12 @@
 import { NavLink, Link } from 'react-router-dom';
-import { ShoppingBag, MessageCircle, Menu, X, HelpCircle, Gem } from 'lucide-react';
+import { MessageCircle, Menu, X, HelpCircle, Gem } from 'lucide-react';
 import { useState } from 'react';
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const handleContact = () => {
-    window.open("https://wa.me/628123456789", "_blank");
+    window.open("https://wa.me/62895402469838", "_blank");
   };
 
   return (
@@ -60,6 +60,24 @@ export default function Navbar() {
             <HelpCircle className="w-3.5 h-3.5" />
             Cara Order
           </NavLink>
+          {/* New menu items */}
+          <NavLink
+            to="/privacy"
+            className={({ isActive }) =>
+              `text-sm font-semibold transition-colors ${isActive ? 'text-white' : 'text-[#94A3B8] hover:text-white'}`
+            }
+          >
+            Kebijakan Privasi
+          </NavLink>
+          <NavLink
+            to="/terms"
+            className={({ isActive }) =>
+              `text-sm font-semibold transition-colors ${isActive ? 'text-white' : 'text-[#94A3B8] hover:text-white'}`
+            }
+          >
+            Syarat &amp; Ketentuan
+          </NavLink>
+
           <button
             onClick={handleContact}
             className="bg-[#0EA5E9] hover:bg-[#0369A1] text-white px-4 py-2 rounded-full text-sm font-bold transition-all flex items-center gap-1.5 shadow-md shadow-[#0EA5E9]/20"

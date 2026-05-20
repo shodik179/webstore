@@ -3,16 +3,18 @@ import { fetchSheetData } from '../utils/fetchData';
 
 export function useSheetData(csvUrl) {
   const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(!!csvUrl);
   const [error, setError] = useState(null);
+  const [prevCsvUrl, setPrevCsvUrl] = useState(csvUrl);
+
+  if (csvUrl !== prevCsvUrl) {
+    setPrevCsvUrl(csvUrl);
+    setLoading(!!csvUrl);
+  }
 
   useEffect(() => {
-    if (!csvUrl) {
-      setLoading(false);
-      return;
-    }
+    if (!csvUrl) return;
     
-    setLoading(true);
     const cacheBusterUrl = `${csvUrl}${csvUrl.includes('?') ? '&' : '?'}_t=${Date.now()}`;
     fetchSheetData(cacheBusterUrl)
       .then(res => {
