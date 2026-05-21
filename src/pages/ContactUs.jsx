@@ -1,4 +1,5 @@
 import { Helmet } from 'react-helmet-async';
+import { ADMIN_WA } from '../utils/config';
 import { Mail, Phone } from 'lucide-react';
 
 export default function ContactUs() {
@@ -14,7 +15,7 @@ export default function ContactUs() {
       <div className="flex flex-col gap-6">
         {/* WhatsApp */}
         <a
-          href="https://wa.me/62895402469838"
+          href={`https://wa.me/${ADMIN_WA}`}
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center gap-3 text-[#0EA5E9] hover:text-[#0284c7] transition-colors"

@@ -1,4 +1,5 @@
-import { ShieldCheck, Zap, Star, MessageSquare, Sparkles, Heart } from 'lucide-react';
+import { ShieldCheck, Zap, Star, MessageSquare, Sparkles, Heart, GraduationCap } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
 const apps = [
@@ -11,7 +12,7 @@ const apps = [
     duration: 5,
     icon: (
       <svg viewBox="0 0 24 24" fill="currentColor" className="text-[#E50914] w-8 h-8">
-        <path d="M4 2v20h4V9l8 13h4V2h-4v13L8 2z"/>
+        <path d="M4 2v20h4V9l8 13h4V2h-4v13L8 2z" />
       </svg>
     )
   },
@@ -24,7 +25,7 @@ const apps = [
     duration: 5.5,
     icon: (
       <svg viewBox="0 0 24 24" fill="currentColor" className="text-[#1DB954] w-8 h-8">
-        <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm4.586 14.424c-.18.295-.565.387-.86.207-2.377-1.454-5.37-1.783-8.892-.982-.336.075-.67-.136-.747-.472-.077-.337.136-.67.472-.747 3.852-.876 7.144-.497 9.82 1.142.296.18.387.564.207.862zm1.226-2.724c-.226.367-.707.487-1.074.26-2.72-1.672-6.87-2.157-10.077-1.182-.413.125-.845-.107-.97-.52-.125-.413.107-.845.52-.97 3.673-1.114 8.243-.57 11.343 1.336.366.226.486.706.258 1.076zm.106-2.825C14.398 8.66 8.566 8.467 5.185 9.493c-.52.157-1.073-.14-1.23-.66-.157-.52.14-1.073.66-1.23 3.882-1.178 10.316-.957 14.37 1.45.467.278.62.883.343 1.35-.277.467-.882.62-1.35.343z"/>
+        <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm4.586 14.424c-.18.295-.565.387-.86.207-2.377-1.454-5.37-1.783-8.892-.982-.336.075-.67-.136-.747-.472-.077-.337.136-.67.472-.747 3.852-.876 7.144-.497 9.82 1.142.296.18.387.564.207.862zm1.226-2.724c-.226.367-.707.487-1.074.26-2.72-1.672-6.87-2.157-10.077-1.182-.413.125-.845-.107-.97-.52-.125-.413.107-.845.52-.97 3.673-1.114 8.243-.57 11.343 1.336.366.226.486.706.258 1.076zm.106-2.825C14.398 8.66 8.566 8.467 5.185 9.493c-.52.157-1.073-.14-1.23-.66-.157-.52.14-1.073.66-1.23 3.882-1.178 10.316-.957 14.37 1.45.467.278.62.883.343 1.35-.277.467-.882.62-1.35.343z" />
       </svg>
     )
   },
@@ -37,7 +38,7 @@ const apps = [
     duration: 4.8,
     icon: (
       <svg viewBox="0 0 24 24" fill="currentColor" className="text-[#FF0000] w-8 h-8">
-        <path d="M23.498 6.163a3.003 3.003 0 0 0-2.11-2.11C19.518 3.545 12 3.545 12 3.545s-7.518 0-9.388.507a3.003 3.003 0 0 0-2.11 2.11C0 8.033 0 12 0 12s0 3.967.502 5.837a3.003 3.003 0 0 0 2.11 2.11c1.87.508 9.388.508 9.388.508s7.518 0 9.388-.508a3.003 3.003 0 0 0 2.11-2.11C24 15.967 24 12 24 12s0-3.967-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+        <path d="M23.498 6.163a3.003 3.003 0 0 0-2.11-2.11C19.518 3.545 12 3.545 12 3.545s-7.518 0-9.388.507a3.003 3.003 0 0 0-2.11 2.11C0 8.033 0 12 0 12s0 3.967.502 5.837a3.003 3.003 0 0 0 2.11 2.11c1.87.508 9.388.508 9.388.508s7.518 0 9.388-.508a3.003 3.003 0 0 0 2.11-2.11C24 15.967 24 12 24 12s0-3.967-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
       </svg>
     )
   },
@@ -50,7 +51,7 @@ const apps = [
     duration: 5.8,
     icon: (
       <svg viewBox="0 0 24 24" fill="currentColor" className="text-[#10a37f] w-8 h-8">
-        <path d="M21.74 11.64a4.19 4.19 0 0 0-.2-1.8c-.46-1.12-1.39-1.94-2.5-2.2a4.42 4.42 0 0 0-3.32.32 4.14 4.14 0 0 0-3.13-1.46c-1.15.02-2.18.6-2.75 1.58a4.4 4.4 0 0 0-2.39-.77 4.19 4.19 0 0 0-3.2 1.5c-.75.87-.99 2.08-.66 3.16a4.42 4.42 0 0 0-.32 3.32 4.14 4.14 0 0 0 1.46 3.13c.87.75 2.08.99 3.16.66a4.4 4.4 0 0 0 3.16.66 4.19 4.19 0 0 0 3.2-1.5c.75-.87.99-2.08.66-3.16a4.42 4.42 0 0 0 .32-3.32c.3-.92.17-1.94-.37-2.75zm-6.19 4.88l-3.3-1.9v-3.8l3.3 1.9v3.8zm-1.15-5.8l-3.3-1.9 3.3-1.9 3.3 1.9-3.3 1.9zm-4.45 1.92L6.8 10.74l3.3-1.9v3.8zm0 1.96v3.8l-3.3-1.9 3.3-1.9zm4.45 3.86l-3.3-1.9 3.3-1.9 3.3 1.9-3.3 1.9zm1.15-5.82l3.3 1.9-3.3 1.9-3.3-1.9 3.3-1.9z"/>
+        <path d="M21.74 11.64a4.19 4.19 0 0 0-.2-1.8c-.46-1.12-1.39-1.94-2.5-2.2a4.42 4.42 0 0 0-3.32.32 4.14 4.14 0 0 0-3.13-1.46c-1.15.02-2.18.6-2.75 1.58a4.4 4.4 0 0 0-2.39-.77 4.19 4.19 0 0 0-3.2 1.5c-.75.87-.99 2.08-.66 3.16a4.42 4.42 0 0 0-.32 3.32 4.14 4.14 0 0 0 1.46 3.13c.87.75 2.08.99 3.16.66a4.4 4.4 0 0 0 3.16.66 4.19 4.19 0 0 0 3.2-1.5c.75-.87.99-2.08.66-3.16a4.42 4.42 0 0 0 .32-3.32c.3-.92.17-1.94-.37-2.75zm-6.19 4.88l-3.3-1.9v-3.8l3.3 1.9v3.8zm-1.15-5.8l-3.3-1.9 3.3-1.9 3.3 1.9-3.3 1.9zm-4.45 1.92L6.8 10.74l3.3-1.9v3.8zm0 1.96v3.8l-3.3-1.9 3.3-1.9zm4.45 3.86l-3.3-1.9 3.3-1.9 3.3 1.9-3.3 1.9zm1.15-5.82l3.3 1.9-3.3 1.9-3.3-1.9 3.3-1.9z" />
       </svg>
     )
   },
@@ -87,31 +88,31 @@ export default function Hero() {
     <section className="relative bg-white border border-slate-100 rounded-3xl mx-4 sm:mx-0 mt-4 mb-6 sm:mt-8 sm:mb-12 shadow-sm overflow-hidden">
       {/* Background Dotted Motif */}
       <div className="absolute inset-0 bg-[radial-gradient(#e2e8f0_1.5px,transparent_1.5px)] [background-size:20px_20px] opacity-70 pointer-events-none" />
-      
+
       {/* Glowing Blob Mesh */}
       <div className="absolute top-0 right-0 w-[450px] h-[450px] bg-gradient-to-br from-[#0EA5E9]/10 to-[#8B5CF6]/5 rounded-full blur-3xl -mr-32 -mt-32 pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-80 h-80 bg-gradient-to-tr from-violet-400/5 to-fuchsia-400/5 rounded-full blur-3xl -ml-20 -mb-20 pointer-events-none" />
 
       <div className="relative z-10 px-4 py-8 sm:px-6 sm:py-16 lg:py-20 max-w-6xl mx-auto flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
-        
+
         {/* Left Column: Text & CTAs */}
         <div className="flex-[1.1] text-center lg:text-left flex flex-col items-center lg:items-start w-full">
-          
+
           {/* Top Pill Badge */}
           <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#E0F2FE] rounded-full text-[10px] sm:text-xs font-bold tracking-wider uppercase mb-4 sm:mb-6 text-[#0369A1] border border-[#BAE6FD]">
-            <ShieldCheck className="w-3.5 h-3.5 text-[#0EA5E9]" />
-            SOLUSI AKUN PREMIUM TERPERCAYA
+            <GraduationCap className="w-3.5 h-3.5 text-[#0EA5E9]" />
+            LAYANAN PREMIUM & PENULISAN AKADEMIK
           </div>
 
           {/* Headline */}
           <h1 className="font-display font-black text-2xl sm:text-4xl lg:text-5xl text-[#0F172A] leading-tight mb-4 sm:mb-6 tracking-tight">
-            Akses Akun Premium <br className="hidden sm:inline" />
-            <span className="text-[#0EA5E9] bg-gradient-to-r from-[#0EA5E9] to-[#0284c7] bg-clip-text text-transparent">Instan & Bergaransi</span>
+            Akun Premium Legal & <br className="hidden sm:inline" />
+            <span className="text-[#0EA5E9] bg-gradient-to-r from-[#0EA5E9] to-[#0284c7] bg-clip-text text-transparent">Jasa Penulisan Tugas</span>
           </h1>
 
-          {/* Subheadline */}
-          <p className="text-[#94A3B8] text-xs sm:text-sm lg:text-base max-w-xl mb-6 sm:mb-8 leading-relaxed font-medium">
-            Nikmati layanan streaming, musik, produktivitas, dan hiburan premium tanpa hambatan. Proses cepat hanya 5 menit via WhatsApp.
+          {/* Subheadline + Hook */}
+          <p className="text-[#94A3B8] text-xs sm:text-sm lg:text-base max-w-xl mb-6 sm:mb-8 leading-relaxed font-semibold">
+            Tugas sekolah, kuliah, proposal, atau Skripsi numpuk bikin pusing? Selesaikan instan di sini! Kami menyediakan akun premium, bergaransi & jasa pengerjaan tugas profesional, bebas plagiat, rapi, dan cepat pengerjaannya via WhatsApp.
           </p>
 
           {/* CTA Buttons */}
@@ -120,18 +121,16 @@ export default function Hero() {
               href="#katalog"
               className="w-full sm:w-auto bg-[#0EA5E9] hover:bg-[#0369A1] text-white font-bold px-6 py-3 sm:px-8 sm:py-3.5 rounded-full transition-all shadow-lg shadow-[#0EA5E9]/20 hover:shadow-xl hover:-translate-y-0.5 transform duration-200 text-xs sm:text-sm text-center cursor-pointer"
             >
-              Pilih Akun Sekarang
+              Beli Akun Premium
             </a>
-            
-            <a
-              href="https://wa.me/628123456789"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full sm:w-auto bg-slate-50 hover:bg-slate-100 text-[#0F172A] border border-slate-200 font-bold px-6 py-3 sm:px-8 sm:py-3.5 rounded-full transition-all hover:-translate-y-0.5 transform duration-200 text-xs sm:text-sm text-center flex items-center justify-center gap-2 cursor-pointer"
+
+            <Link
+              to="/jasa"
+              className="w-full sm:w-auto bg-slate-50 hover:bg-slate-100 text-[#0F172A] border border-slate-200 font-bold px-6 py-3 sm:px-8 sm:py-3.5 rounded-full transition-all hover:-translate-y-0.5 transform duration-200 text-xs sm:text-sm text-center flex items-center justify-center gap-2 cursor-pointer shadow-sm"
             >
-              <MessageSquare className="w-3.5 h-3.5 text-[#0EA5E9]" />
-              Hubungi Admin
-            </a>
+              <GraduationCap className="w-3.5 h-3.5 text-[#0EA5E9]" />
+              Jasa Penulisan Tugas
+            </Link>
           </div>
 
           {/* Trust Indicators */}
@@ -151,8 +150,8 @@ export default function Hero() {
           <div className="flex lg:hidden flex-wrap items-center justify-center gap-3.5 mt-8 border-t border-slate-100 pt-6 w-full">
             <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block w-full text-center mb-1">Aplikasi Terpopuler</span>
             {apps.map((app, idx) => (
-              <div 
-                key={idx} 
+              <div
+                key={idx}
                 className="w-9 h-9 rounded-xl bg-white border border-slate-100 shadow-[0_2px_8px_rgba(0,0,0,0.02)] flex items-center justify-center flex-shrink-0"
                 title={app.name}
               >

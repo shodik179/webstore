@@ -1,12 +1,13 @@
 import { NavLink, Link } from 'react-router-dom';
-import { MessageCircle, Menu, X, HelpCircle, Gem } from 'lucide-react';
+import { ADMIN_WA } from '../utils/config';
+import { MessageCircle, Menu, X, HelpCircle, Gem, Sparkles } from 'lucide-react';
 import { useState } from 'react';
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const handleContact = () => {
-    window.open("https://wa.me/62895402469838", "_blank");
+    window.open(`https://wa.me/${ADMIN_WA}`, "_blank");
   };
 
   return (
@@ -42,18 +43,22 @@ export default function Navbar() {
           <NavLink
             to="/jasa"
             className={({ isActive }) =>
-              `text-sm font-semibold transition-colors ${isActive ? 'text-white' : 'text-[#94A3B8] hover:text-white'}`
+              `text-xs font-bold px-3.5 py-1.5 rounded-full transition-all flex items-center gap-1.5 border relative ${isActive
+                ? 'bg-gradient-to-r from-[#0EA5E9] to-[#0284c7] border-transparent text-white shadow-md shadow-[#0EA5E9]/20'
+                : 'border-[#0EA5E9]/30 text-slate-200 hover:text-white hover:border-[#0EA5E9]/60 hover:bg-[#0EA5E9]/5'
+              }`
             }
           >
-            Jasa
+            <Sparkles className="w-3.5 h-3.5 text-amber-400 animate-pulse" />
+            <span>Jasa Tugas &amp; Skripsi</span>
+            <span className="absolute -top-1.5 -right-2 text-[8px] bg-sky-500 text-white font-extrabold px-1 rounded-full animate-bounce scale-90">LIVE</span>
           </NavLink>
           <NavLink
             to="/cara-order"
             className={({ isActive }) =>
-              `text-xs font-bold px-3.5 py-1.5 rounded-full transition-all flex items-center gap-1 border ${
-                isActive
-                  ? 'bg-[#0EA5E9] border-[#0EA5E9] text-white shadow-md shadow-[#0EA5E9]/20'
-                  : 'border-[#0EA5E9]/30 text-[#0EA5E9] hover:border-[#0EA5E9] hover:bg-[#0EA5E9]/10'
+              `text-xs font-bold px-3.5 py-1.5 rounded-full transition-all flex items-center gap-1 border ${isActive
+                ? 'bg-[#0EA5E9] border-[#0EA5E9] text-white shadow-md shadow-[#0EA5E9]/20'
+                : 'border-[#0EA5E9]/30 text-[#0EA5E9] hover:border-[#0EA5E9] hover:bg-[#0EA5E9]/10'
               }`
             }
           >
@@ -90,10 +95,9 @@ export default function Navbar() {
           <NavLink
             to="/cara-order"
             className={({ isActive }) =>
-              `text-[10.5px] font-bold px-3 py-1.5 rounded-full transition-all flex items-center gap-1 border ${
-                isActive
-                  ? 'bg-[#0EA5E9] border-[#0EA5E9] text-white shadow-sm'
-                  : 'border-[#0EA5E9]/40 text-[#0EA5E9] hover:bg-[#0EA5E9]/10'
+              `text-[10.5px] font-bold px-3 py-1.5 rounded-full transition-all flex items-center gap-1 border ${isActive
+                ? 'bg-[#0EA5E9] border-[#0EA5E9] text-white shadow-sm'
+                : 'border-[#0EA5E9]/40 text-[#0EA5E9] hover:bg-[#0EA5E9]/10'
               }`
             }
           >
@@ -127,19 +131,25 @@ export default function Navbar() {
             to="/jasa"
             onClick={() => setMobileOpen(false)}
             className={({ isActive }) =>
-              `text-sm font-semibold py-2 px-3 rounded-lg transition-colors ${isActive ? 'bg-slate-800 text-white' : 'text-[#94A3B8] hover:text-white hover:bg-slate-800'}`
+              `text-sm font-semibold py-2 px-3 rounded-lg transition-all flex items-center justify-between ${isActive
+                ? 'bg-slate-800 text-white'
+                : 'text-[#94A3B8] hover:text-white hover:bg-slate-800'
+              }`
             }
           >
-            Layanan Jasa
+            <div className="flex items-center gap-2">
+              <Sparkles className="w-4 h-4 text-amber-400" />
+              <span>Layanan Jasa</span>
+            </div>
+            <span className="text-[7.5px] bg-[#0EA5E9] text-white font-black px-1.5 py-0.5 rounded-full animate-pulse">NEW LIVE</span>
           </NavLink>
           <NavLink
             to="/cara-order"
             onClick={() => setMobileOpen(false)}
             className={({ isActive }) =>
-              `text-xs font-bold py-2.5 px-4 rounded-xl flex items-center gap-1.5 transition-all border ${
-                isActive
-                  ? 'bg-[#0EA5E9] border-[#0EA5E9] text-white shadow-sm'
-                  : 'bg-slate-800/40 border-slate-700 text-[#0EA5E9] hover:bg-slate-800'
+              `text-xs font-bold py-2.5 px-4 rounded-xl flex items-center gap-1.5 transition-all border ${isActive
+                ? 'bg-[#0EA5E9] border-[#0EA5E9] text-white shadow-sm'
+                : 'bg-slate-800/40 border-slate-700 text-[#0EA5E9] hover:bg-slate-800'
               }`
             }
           >

@@ -1,5 +1,6 @@
 import { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { ADMIN_WA } from '../utils/config';
 import { ChevronLeft, ChevronRight, Zap, Eye, X, MessageCircle } from 'lucide-react';
 
 function parseVariations(variationsStr, defaultPrice) {
@@ -131,27 +132,35 @@ export default function Card({ title, variations, description, price, images, is
     return formatted;
   };
 
-  const handleWhatsApp = () => {
-    const adminWA = "62895402469838";
+  const handleContact = () => {
+    let message = "";
     
-    let message = `Halo Admin, saya mau tanya stok *${title}*`;
-    
-    if (currentVariant && currentVariant.name !== 'Default' && parsedVariations.length > 1) {
-      message += ` - *${currentVariant.name}*`;
+    if (isService) {
+      message = `Halo Admin, saya mau pesan jasa *${title}*`;
+      if (currentVariant && currentVariant.name !== 'Default' && parsedVariations.length > 1) {
+        message += ` - *${currentVariant.name}*`;
+      }
+      const formattedPrice = formatPrice(currentVariant?.price || price);
+      if (formattedPrice && formattedPrice !== 'Tanya Harga') {
+        message += ` dengan harga *${formattedPrice}*`;
+      }
+      message += `.\n\nBerikut detail tugas saya:\n- Judul / Topik Tugas: [Tulis di sini]\n- Estimasi Jumlah Halaman: [Tulis di sini]\n- Deadline Pengumpulan: [Tulis di sini]\n- Catatan Tambahan/Format Pengerjaan: [Tulis di sini]\n\nApakah bisa diproses?`;
+    } else {
+      message = `Halo Admin, saya mau tanya stok *${title}*`;
+      if (currentVariant && currentVariant.name !== 'Default' && parsedVariations.length > 1) {
+        message += ` - *${currentVariant.name}*`;
+      }
+      if (activeDuration) {
+        message += ` (Durasi: *${activeDuration}*)`;
+      }
+      const formattedPrice = formatPrice(currentVariant?.price || price);
+      if (formattedPrice && formattedPrice !== 'Tanya Harga') {
+        message += ` dengan harga *${formattedPrice}*`;
+      }
+      message += `. Apakah masih ready?`;
     }
     
-    if (activeDuration) {
-      message += ` (Durasi: *${activeDuration}*)`;
-    }
-    
-    const formattedPrice = formatPrice(currentVariant?.price || price);
-    if (formattedPrice && formattedPrice !== 'Tanya Harga') {
-      message += ` dengan harga *${formattedPrice}*`;
-    }
-    
-    message += `. Apakah masih ready?`;
-    
-    window.open(`https://wa.me/${adminWA}?text=${encodeURIComponent(message)}`, "_blank");
+    window.open(`https://wa.me/${ADMIN_WA}?text=${encodeURIComponent(message)}`, "_blank");
   };
 
   const handleNext = (e) => {
@@ -353,7 +362,7 @@ export default function Card({ title, variations, description, price, images, is
             </div>
             
             <button
-              onClick={handleWhatsApp}
+              onClick={handleContact}
               className="w-full sm:w-auto flex-shrink-0 bg-[#0EA5E9] hover:bg-[#0369A1] text-white px-4 py-2.5 rounded-full font-bold text-xs sm:text-sm transition-all active:scale-95 shadow-sm shadow-[#0EA5E9]/10 flex items-center justify-center gap-1.5 cursor-pointer"
             >
               <MessageCircle className="w-4 h-4" />
@@ -499,7 +508,7 @@ export default function Card({ title, variations, description, price, images, is
                 
                 <button
                   onClick={() => {
-                    handleWhatsApp();
+                    handleContact();
                     setIsModalOpen(false);
                   }}
                   className="bg-[#0EA5E9] hover:bg-[#0369A1] text-white px-5 py-3 rounded-full font-bold text-xs sm:text-sm transition-all active:scale-95 shadow-sm shadow-[#0EA5E9]/10 flex items-center justify-center gap-1.5 cursor-pointer"
