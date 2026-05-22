@@ -3,7 +3,8 @@ import Card from '../components/Card';
 import SEO from '../components/SEO';
 import { useSheetData } from '../hooks/useSheetData';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Search, GraduationCap, Clock, RefreshCw, ShieldCheck, HelpCircle } from 'lucide-react';
+import { Search, GraduationCap, Clock, RefreshCw, ShieldCheck, Sparkles, MessageCircle, ArrowRight } from 'lucide-react';
+import { ADMIN_WA } from '../utils/config';
 
 // Ganti GID di bawah dengan GID tab Jasa Anda setelah mempublikasikan Tab Jasa di Google Sheets
 const JASA_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQaajQvi4gluJ3DN1wGCrPGb_sBepSiGMrnmvjCE1zEhkdlT15fMPuOq0stHn5ZpHVSqJdXT5rxgrDY/pub?gid=919313542&single=true&output=csv";
@@ -111,25 +112,141 @@ export default function Services() {
         keywords="jasa tugas sekolah, jasa buat makalah, jasa tulis proposal skripsi, review jurnal ilmiah, jasa bikin laporan kuliah"
       />
 
-      {/* Hero Jasa */}
-      <section className="relative overflow-hidden py-16 px-4 sm:px-8 bg-[#0F172A] text-white sm:rounded-3xl my-6 shadow-xl border border-slate-800">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(14,165,233,0.15),transparent)] pointer-events-none" />
-        <div className="relative z-10 max-w-3xl text-left">
-          <span className="inline-block px-3.5 py-1 bg-sky-500/10 text-[#0EA5E9] text-xs font-bold rounded-full mb-4 tracking-wider uppercase border border-[#0EA5E9]/20">
-            🎓 JASA PENULISAN AKADEMIK & PROFESIONAL
-          </span>
-          <h1 className="font-display font-black text-3xl sm:text-5xl text-white tracking-tight leading-none mb-4">
-            Jasa Tugas & Skripsi <br className="hidden sm:inline" />
-            <span className="text-[#0EA5E9]">Bebas Plagiat</span> & Tepat Waktu
+      {/* Premium Hero Jasa */}
+      <section className="relative overflow-hidden py-12 md:py-16 px-6 sm:px-12 bg-gradient-to-br from-[#0F172A] via-[#1E293B] to-[#0F172A] text-white sm:rounded-3xl my-6 shadow-2xl border border-slate-800 flex flex-col lg:flex-row items-center justify-between gap-10 text-left">
+        
+        {/* Background ambient light effects */}
+        <div className="absolute top-0 right-0 w-[350px] h-[350px] bg-[#0EA5E9]/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-[250px] h-[250px] bg-purple-500/5 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.01)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.01)_1px,transparent_1px)] bg-[size:32px_32px] pointer-events-none opacity-40" />
+
+        {/* Left Column: Hook and Copywriting */}
+        <motion.div 
+          initial={{ opacity: 0, x: -30 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6 }}
+          className="relative z-10 flex-1 max-w-2xl text-left space-y-6"
+        >
+          <motion.span 
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.1 }}
+            className="inline-flex items-center gap-1.5 px-4 py-1.5 bg-[#0EA5E9]/10 text-[#0EA5E9] text-xs font-bold rounded-full tracking-wider uppercase border border-[#0EA5E9]/20"
+          >
+            <Sparkles className="w-3.5 h-3.5 text-amber-400 animate-pulse" />
+            TIM AKADEMIK & PENULIS PROFESIONAL
+          </motion.span>
+          
+          <h1 className="font-display font-black text-3xl sm:text-5xl text-white tracking-tight leading-none">
+            Tugas Sekolah & Kuliah <br className="hidden sm:inline" />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0EA5E9] via-sky-400 to-[#0284c7]">
+              Selesai Tepat Waktu!
+            </span>
           </h1>
-          <p className="text-slate-400 text-sm sm:text-base leading-relaxed max-w-2xl">
-            Tugas sekolah, kuliah, proposal, atau Skripsi numpuk bikin pusing? Selesaikan instan di sini! Kami menyediakan jasa pengerjaan tugas profesional (makalah, laporan praktikum, review jurnal) yang disusun terstruktur, bebas plagiat, rapi, dan cepat pengerjaannya via WhatsApp.
+          
+          <p className="text-slate-300 text-sm sm:text-base leading-relaxed max-w-xl">
+            Tugas menumpuk, laporan praktikum sulit, atau pusing menyusun proposal Skripsi? Serahkan pada kami! Tim penulis akademisi kami siap menyusun tugas Anda secara terstruktur, rapi, rahasia, dan <strong className="text-white font-extrabold">100% bebas plagiarisme</strong>.
           </p>
-        </div>
+
+          {/* Hooks / Value Props List */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 pt-2">
+            {[
+              { text: "Laporan Turnitin Asli (Bebas Plagiat)", desc: "Jaminan orisinalitas karya ilmiah Anda" },
+              { text: "Bimbingan & Revisi Minor Gratis", desc: "Konsultasi intensif dengan penulis pilihan" },
+              { text: "Pengerjaan Super Cepat (Bisa 24 Jam)", desc: "Membantu Anda menghadapi deadline mendesak" },
+              { text: "Privasi Kerahasiaan Aman 100%", desc: "Data pribadi dan tugas Anda dijamin rahasia" }
+            ].map((prop, idx) => (
+              <motion.div 
+                key={idx}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 + idx * 0.1 }}
+                className="flex items-start gap-2.5"
+              >
+                <div className="w-5 h-5 rounded-full bg-[#0EA5E9]/15 text-[#0EA5E9] flex items-center justify-center flex-shrink-0 mt-0.5 border border-[#0EA5E9]/20">
+                  <ShieldCheck className="w-3.5 h-3.5 stroke-[2.5]" />
+                </div>
+                <div>
+                  <h4 className="text-xs font-bold text-white leading-tight">{prop.text}</h4>
+                  <p className="text-[10px] text-slate-400 leading-normal mt-0.5">{prop.desc}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* CTAs */}
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 pt-4">
+            <a 
+              href={`https://wa.me/${ADMIN_WA}?text=${encodeURIComponent('Halo Admin, saya ingin konsultasi mengenai pengerjaan tugas akademik/skripsi saya.')}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full sm:w-auto"
+            >
+              <motion.button
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.97 }}
+                className="w-full sm:w-auto bg-[#0EA5E9] hover:bg-[#0369A1] text-white px-8 py-4 rounded-full font-bold text-sm transition-all shadow-md shadow-[#0EA5E9]/20 flex items-center justify-center gap-2 cursor-pointer"
+              >
+                <MessageCircle className="w-4.5 h-4.5" />
+                <span>Hubungi Admin via WA (Fast Respon)</span>
+              </motion.button>
+            </a>
+            
+            <a 
+              href="#katalog-jasa"
+              className="w-full sm:w-auto"
+            >
+              <motion.button
+                whileHover={{ scale: 1.03, backgroundColor: "rgba(255, 255, 255, 0.05)" }}
+                whileTap={{ scale: 0.97 }}
+                className="w-full sm:w-auto border border-slate-700 bg-slate-900/30 text-slate-300 px-6 py-4 rounded-full font-bold text-sm transition-all flex items-center justify-center gap-1.5 cursor-pointer"
+              >
+                <span>Lihat Layanan Jasa</span>
+                <ArrowRight className="w-4 h-4" />
+              </motion.button>
+            </a>
+          </div>
+        </motion.div>
+
+        {/* Right Column: Animated Image and glowing shapes */}
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.9, rotate: -2 }}
+          animate={{ opacity: 1, scale: 1, rotate: 0 }}
+          transition={{ duration: 0.8 }}
+          className="flex-1 flex justify-center items-center relative z-10 w-full max-w-sm lg:max-w-md"
+        >
+          {/* Outer rotating glow effect */}
+          <div className="absolute inset-0 bg-gradient-to-tr from-[#0EA5E9]/20 to-purple-500/20 rounded-full blur-3xl pointer-events-none animate-[pulse_6s_infinite]" />
+
+          {/* Floating Hero Image */}
+          <motion.div
+            animate={{ y: [-12, 12, -12] }}
+            transition={{
+              duration: 5,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+            className="w-full relative"
+          >
+            <img 
+              src="/jasa-hero-premium.webp" 
+              alt="Jasa Tugas Akademik Premium Illustration"
+              width="1024"
+              height="1024"
+              fetchPriority="high"
+              decoding="async"
+              className="w-full h-auto object-contain drop-shadow-[0_20px_50px_rgba(14,165,233,0.3)] rounded-3xl"
+              onError={(e) => {
+                e.target.src = "/favicon.svg";
+              }}
+            />
+          </motion.div>
+        </motion.div>
+
       </section>
 
       {/* Katalog Jasa Section */}
-      <section id="katalog-jasa" className="pt-2 px-4 sm:px-0 scroll-mt-20">
+      <section id="katalog-jasa" className="pt-6 px-4 sm:px-0 scroll-mt-20">
         {/* Header Katalog */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-6 gap-3">
           <div>
@@ -221,9 +338,9 @@ export default function Services() {
           <span className="inline-block px-3 py-1 bg-[#E0F2FE] text-[#0EA5E9] text-xs font-bold rounded-full mb-3 tracking-wider uppercase">
             Mengapa Memilih Kami?
           </span>
-          <h2 className="font-display font-bold text-2xl sm:text-3xl text-[#0F172A]">Garansi Kualitas Penulisan</h2>
+          <h2 className="font-display font-bold text-2xl sm:text-3xl text-[#0F172A]">Kualitas Penulisan Terbaik</h2>
           <p className="text-[#94A3B8] text-sm sm:text-base mt-2">
-            Kami mendedikasikan pengerjaan tugas Anda pada tim penulis berpengalaman untuk nilai akademis maksimal.
+            Kami mendedikasikan pengerjaan tugas Anda pada tim penulis berpengalaman untuk hasil pengerjaan terbaik.
           </p>
         </div>
 
@@ -234,7 +351,7 @@ export default function Services() {
             </div>
             <h3 className="font-display font-bold text-base text-[#0F172A] mb-2">Penulis Ahli</h3>
             <p className="text-xs text-[#94A3B8] leading-relaxed">
-              Dikerjakan oleh mahasiswa tingkat akhir & alumni universitas ternama yang menguasai metodologi penelitian akademis.
+              Dikerjakan oleh tim profesional dan berpengalaman yang memahami kebutuhan penulisan tugas secara rapi dan terstruktur.
             </p>
           </div>
 

@@ -1,11 +1,13 @@
 import { useState, useMemo } from 'react';
+import { Link } from 'react-router-dom';
 import Hero from '../components/Hero';
 import FAQ from '../components/FAQ';
 import Card from '../components/Card';
 import SEO from '../components/SEO';
 import { useSheetData } from '../hooks/useSheetData';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Search, ShieldCheck, Zap, Clock, CreditCard, Star } from 'lucide-react';
+import { Search, ShieldCheck, Zap, Clock, CreditCard, Star, Sparkles, GraduationCap, ArrowRight } from 'lucide-react';
+import { ADMIN_WA } from '../utils/config';
 
 const PRODUK_CSV_URL = "https://docs.google.com/spreadsheets/d/1DRkTRX-wUlo7oRLRPp0IMEw18ziPWCGvh9f3hOc5XvU/export?format=csv";
 
@@ -158,6 +160,81 @@ export default function Home() {
         </motion.div>
       </section>
 
+      {/* Banner Promosi Jasa Tugas Akademik */}
+      <section className="my-12 px-4 sm:px-0">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="relative overflow-hidden py-12 px-6 sm:px-12 bg-gradient-to-r from-[#0F172A] to-[#1E293B] text-white sm:rounded-3xl shadow-xl border border-slate-800 flex flex-col md:flex-row items-center justify-between gap-8 text-left"
+        >
+          {/* Background decorative glows */}
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,rgba(14,165,233,0.12),transparent)] pointer-events-none" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(168,85,247,0.06),transparent)] pointer-events-none" />
+
+          {/* Text Content */}
+          <div className="space-y-4 max-w-2xl relative z-10">
+            <span className="inline-flex items-center gap-1.5 px-3.5 py-1 bg-sky-500/10 text-[#0EA5E9] text-[10px] sm:text-xs font-bold rounded-full tracking-wider uppercase border border-[#0EA5E9]/20">
+              <Sparkles className="w-3.5 h-3.5 text-amber-400" />
+              LAYANAN BARU: JASA TUGAS & SKRIPSI
+            </span>
+            <h2 className="font-display font-black text-2xl sm:text-4xl text-white tracking-tight leading-tight">
+              Tugas & Skripsi Menumpuk? <br />
+              <span className="text-[#0EA5E9]">Selesaikan Instan</span> & Tepat Waktu!
+            </h2>
+            <p className="text-slate-400 text-xs sm:text-sm leading-relaxed">
+              Dapatkan bantuan pengerjaan tugas profesional (makalah, laporan praktikum, review jurnal, skripsi/TA) yang disusun terstruktur oleh tim ahli. Jaminan 100% orisinal bebas plagiarisme (Turnitin), rapi, rahasia terjamin, dan selesai tepat waktu!
+            </p>
+            
+            {/* Features badges */}
+            <div className="flex flex-wrap gap-x-4 gap-y-2 pt-2">
+              {[
+                'Bebas Plagiasi (Turnitin)',
+                'Gratis Revisi',
+                'Pengerjaan Cepat / Ekspres',
+                'Privasi 100% Aman'
+              ].map((feat, i) => (
+                <div key={i} className="flex items-center gap-1.5 text-slate-300 text-[10px] sm:text-xs font-semibold">
+                  <div className="w-1.5 h-1.5 rounded-full bg-[#0EA5E9]" />
+                  <span>{feat}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Action buttons */}
+          <div className="flex-shrink-0 flex flex-col sm:flex-row md:flex-col lg:flex-row items-center gap-3 w-full sm:w-auto z-10">
+            <Link to="/jasa" className="w-full sm:w-auto">
+              <motion.button
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.97 }}
+                className="w-full sm:w-auto bg-[#0EA5E9] hover:bg-[#0369A1] text-white px-7 py-3.5 rounded-full font-bold text-xs sm:text-sm transition-all shadow-md shadow-[#0EA5E9]/20 flex items-center justify-center gap-1.5 cursor-pointer"
+              >
+                <GraduationCap className="w-4 h-4" />
+                <span>Lihat Jasa Tugas</span>
+              </motion.button>
+            </Link>
+            
+            <a
+              href={`https://wa.me/${ADMIN_WA}?text=${encodeURIComponent('Halo Admin, saya mau tanya & konsultasi gratis mengenai Jasa Tugas / Skripsi.')}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full sm:w-auto"
+            >
+              <motion.button
+                whileHover={{ scale: 1.03, backgroundColor: 'rgba(255, 255, 255, 0.05)' }}
+                whileTap={{ scale: 0.97 }}
+                className="w-full sm:w-auto border border-slate-700 text-white bg-slate-900/40 px-6 py-3.5 rounded-full font-bold text-xs sm:text-sm transition-all flex items-center justify-center gap-1.5 cursor-pointer"
+              >
+                <span>Konsultasi Gratis WA</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </motion.button>
+            </a>
+          </div>
+        </motion.div>
+      </section>
+
       {/* H2 -> Layanan Kami */}
       <section className="py-12 px-4 sm:px-0">
         <div className="text-center max-w-xl mx-auto mb-10">
@@ -294,16 +371,16 @@ export default function Home() {
                 {[...Array(5)].map((_, i) => <Star key={i} className="w-4 h-4 text-amber-400 fill-amber-400 animate-none" />)}
               </div>
               <p className="text-xs text-slate-500 italic leading-relaxed mb-4">
-                "Netflix premiumnya anti-limit layar dan jernih ultra-HD. Pas ada kendala langsung dibantu klaim garansi ganti profil baru, top seller!"
+                "Sangat terbantu dengan jasa pengerjaan makalah di sini! Hasilnya luar biasa rapi, sesuai dengan format kampus saya, dan dikasih laporan Turnitin gratis dengan hasil plagiasi di bawah 10%. Recommended!"
               </p>
             </div>
             <div className="border-t border-slate-50 pt-3 flex items-center gap-3">
-              <div className="w-8 h-8 rounded-full bg-[#E0F2FE] flex items-center justify-center font-bold text-xs text-[#0EA5E9]">
-                SP
+              <div className="w-8 h-8 rounded-full bg-[#F0F9FF] flex items-center justify-center font-bold text-xs text-[#0EA5E9]">
+                CA
               </div>
               <div>
-                <h4 className="text-xs font-bold text-[#0F172A]">Siti P.</h4>
-                <p className="text-[10px] text-[#94A3B8]">Pelanggan Netflix</p>
+                <h4 className="text-xs font-bold text-[#0F172A]">Clarissa A.</h4>
+                <p className="text-[10px] text-[#94A3B8]">Pelanggan Jasa Tugas</p>
               </div>
             </div>
           </div>

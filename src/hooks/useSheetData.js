@@ -12,31 +12,43 @@ export function useSheetData(csvUrl) {
   useEffect(() => {
     if (!csvUrl) return;
 
+    let cancelled = false;
     const cached = sheetCache[csvUrl];
-    if (cached) {
-      setData(cached);
-      setLoading(false);
-    } else {
-      setLoading(true);
-    }
+    Promise.resolve().then(() => {
+      if (cancelled) return;
+
+      if (cached) {
+        setData(cached);
+        setLoading(false);
+      } else {
+        setLoading(true);
+      }
+    });
 
     const cacheBusterUrl = `${csvUrl}${csvUrl.includes('?') ? '&' : '?'}_t=${Date.now()}`;
 
     fetchSheetData(cacheBusterUrl)
       .then(res => {
+        if (cancelled) return;
         sheetCache[csvUrl] = res; // Save to global cache
         setData(res);
         setError(null);
       })
       .catch(err => {
+        if (cancelled) return;
         // Only set error state if we have nothing in cache to overlay
         if (!sheetCache[csvUrl]) {
           setError(err);
         }
       })
       .finally(() => {
+        if (cancelled) return;
         setLoading(false);
       });
+
+    return () => {
+      cancelled = true;
+    };
   }, [csvUrl]);
 
   return { data, loading, error };

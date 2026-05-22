@@ -133,10 +133,10 @@ export default function Card({ title, variations, description, price, images, is
   };
 
   const handleContact = () => {
-    let message = "";
+    let message;
     
     if (isService) {
-      message = `Halo Admin, saya mau pesan jasa *${title}*`;
+      message = `Hallo Admin, saya mau pesen jasa *${title}*`;
       if (currentVariant && currentVariant.name !== 'Default' && parsedVariations.length > 1) {
         message += ` - *${currentVariant.name}*`;
       }
@@ -144,7 +144,7 @@ export default function Card({ title, variations, description, price, images, is
       if (formattedPrice && formattedPrice !== 'Tanya Harga') {
         message += ` dengan harga *${formattedPrice}*`;
       }
-      message += `.\n\nBerikut detail tugas saya:\n- Judul / Topik Tugas: [Tulis di sini]\n- Estimasi Jumlah Halaman: [Tulis di sini]\n- Deadline Pengumpulan: [Tulis di sini]\n- Catatan Tambahan/Format Pengerjaan: [Tulis di sini]\n\nApakah bisa diproses?`;
+      message += `, apakah bisa?`;
     } else {
       message = `Halo Admin, saya mau tanya stok *${title}*`;
       if (currentVariant && currentVariant.name !== 'Default' && parsedVariations.length > 1) {

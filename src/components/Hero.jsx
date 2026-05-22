@@ -1,4 +1,4 @@
-import { ShieldCheck, Zap, Star, MessageSquare, Sparkles, Heart, GraduationCap } from 'lucide-react';
+import { Star, Sparkles, GraduationCap } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
@@ -112,7 +112,7 @@ export default function Hero() {
 
           {/* Subheadline + Hook */}
           <p className="text-[#94A3B8] text-xs sm:text-sm lg:text-base max-w-xl mb-6 sm:mb-8 leading-relaxed font-semibold">
-            Tugas sekolah, kuliah, proposal, atau Skripsi numpuk bikin pusing? Selesaikan instan di sini! Kami menyediakan akun premium, bergaransi & jasa pengerjaan tugas profesional, bebas plagiat, rapi, dan cepat pengerjaannya via WhatsApp.
+            Tugas sekolah, kuliah, proposal, atau Skripsi numpuk bikin pusing? Selesaikan instan di sini! Kami menyediakan akun premium bergaransi serta jasa pengerjaan tugas profesional yang bebas plagiat, rapi, dan cepat pengerjaannya via WhatsApp.
           </p>
 
           {/* CTA Buttons */}
@@ -169,8 +169,12 @@ export default function Hero() {
           transition={{ duration: 0.7, ease: "easeOut" }}
         >
           <motion.img
-            src="/hero-illustration.png"
+            src="/hero-illustration.webp"
             alt="Premium digital subscription illustration"
+            width="1024"
+            height="1024"
+            fetchPriority="high"
+            decoding="async"
             className="w-full max-w-md drop-shadow-xl select-none"
             animate={{ y: [0, -12, 0] }}
             transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut" }}

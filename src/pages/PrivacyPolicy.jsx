@@ -4,7 +4,7 @@ export default function PrivacyPolicy() {
   return (
     <section className="max-w-4xl mx-auto p-6 sm:p-12 text-[#0F172A]">
       <Helmet>
-        <title>Kebijakan Privasi – APK Premium</title>
+        <title>Kebijakan Privasi - APK Premium</title>
         <meta name="description" content="Kebijakan privasi untuk layanan APK Premium, menjelaskan pengumpulan data, penggunaan, dan hak pengguna." />
       </Helmet>
       <h1 className="font-display font-bold text-3xl sm:text-4xl mb-6 text-[#0F172A]">

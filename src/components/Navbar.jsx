@@ -35,7 +35,11 @@ export default function Navbar() {
             to="/"
             end
             className={({ isActive }) =>
-              `text-sm font-semibold transition-colors ${isActive ? 'text-white' : 'text-[#94A3B8] hover:text-white'}`
+              `text-sm font-semibold transition-all relative py-1 ${
+                isActive
+                  ? 'text-[#0EA5E9] font-bold after:content-[""] after:absolute after:bottom-[-6px] after:left-1/2 after:-translate-x-1/2 after:w-5 after:h-0.5 after:bg-[#0EA5E9] after:rounded-full after:shadow-[0_0_8px_rgba(14,165,233,0.8)]'
+                  : 'text-[#94A3B8] hover:text-white'
+              }`
             }
           >
             Produk
@@ -64,23 +68,6 @@ export default function Navbar() {
           >
             <HelpCircle className="w-3.5 h-3.5" />
             Cara Order
-          </NavLink>
-          {/* New menu items */}
-          <NavLink
-            to="/privacy"
-            className={({ isActive }) =>
-              `text-sm font-semibold transition-colors ${isActive ? 'text-white' : 'text-[#94A3B8] hover:text-white'}`
-            }
-          >
-            Kebijakan Privasi
-          </NavLink>
-          <NavLink
-            to="/terms"
-            className={({ isActive }) =>
-              `text-sm font-semibold transition-colors ${isActive ? 'text-white' : 'text-[#94A3B8] hover:text-white'}`
-            }
-          >
-            Syarat &amp; Ketentuan
           </NavLink>
 
           <button
@@ -122,7 +109,11 @@ export default function Navbar() {
             end
             onClick={() => setMobileOpen(false)}
             className={({ isActive }) =>
-              `text-sm font-semibold py-2 px-3 rounded-lg transition-colors ${isActive ? 'bg-slate-800 text-white' : 'text-[#94A3B8] hover:text-white hover:bg-slate-800'}`
+              `text-sm font-semibold py-2.5 px-3 rounded-lg transition-all flex items-center gap-2.5 border-l-2 ${
+                isActive
+                  ? 'border-[#0EA5E9] bg-[#0EA5E9]/5 text-[#0EA5E9] font-bold'
+                  : 'border-transparent text-[#94A3B8] hover:text-white hover:bg-slate-800/60'
+              }`
             }
           >
             Produk Akun
@@ -131,9 +122,10 @@ export default function Navbar() {
             to="/jasa"
             onClick={() => setMobileOpen(false)}
             className={({ isActive }) =>
-              `text-sm font-semibold py-2 px-3 rounded-lg transition-all flex items-center justify-between ${isActive
-                ? 'bg-slate-800 text-white'
-                : 'text-[#94A3B8] hover:text-white hover:bg-slate-800'
+              `text-sm font-semibold py-2.5 px-3 rounded-lg transition-all flex items-center justify-between border-l-2 ${
+                isActive
+                  ? 'border-[#0EA5E9] bg-gradient-to-r from-[#0EA5E9]/10 to-transparent text-white font-bold'
+                  : 'border-transparent text-[#94A3B8] hover:text-white hover:bg-slate-800/60'
               }`
             }
           >
@@ -148,7 +140,7 @@ export default function Navbar() {
             onClick={() => setMobileOpen(false)}
             className={({ isActive }) =>
               `text-xs font-bold py-2.5 px-4 rounded-xl flex items-center gap-1.5 transition-all border ${isActive
-                ? 'bg-[#0EA5E9] border-[#0EA5E9] text-white shadow-sm'
+                ? 'bg-[#0EA5E9] border-[#0EA5E9] text-white shadow-md shadow-[#0EA5E9]/20'
                 : 'bg-slate-800/40 border-slate-700 text-[#0EA5E9] hover:bg-slate-800'
               }`
             }
@@ -156,6 +148,33 @@ export default function Navbar() {
             <HelpCircle className="w-4 h-4" />
             Cara Order
           </NavLink>
+
+          {/* Footer links accessible from mobile menu too */}
+          <div className="border-t border-slate-800 pt-3 mt-1 flex gap-4">
+            <NavLink
+              to="/privacy"
+              onClick={() => setMobileOpen(false)}
+              className={({ isActive }) =>
+                `text-[11px] font-semibold transition-colors ${
+                  isActive ? 'text-[#0EA5E9]' : 'text-slate-500 hover:text-slate-300'
+                }`
+              }
+            >
+              Kebijakan Privasi
+            </NavLink>
+            <span className="text-slate-700 text-xs">-</span>
+            <NavLink
+              to="/terms"
+              onClick={() => setMobileOpen(false)}
+              className={({ isActive }) =>
+                `text-[11px] font-semibold transition-colors ${
+                  isActive ? 'text-[#0EA5E9]' : 'text-slate-500 hover:text-slate-300'
+                }`
+              }
+            >
+              Syarat &amp; Ketentuan
+            </NavLink>
+          </div>
         </div>
       )}
     </nav>

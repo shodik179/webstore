@@ -6,7 +6,7 @@ export default function ContactUs() {
   return (
     <section className="max-w-3xl mx-auto p-6 sm:p-12 text-[#0F172A]">
       <Helmet>
-        <title>Hubungi Kami – APK Premium</title>
+        <title>Hubungi Kami - APK Premium</title>
         <meta name="description" content="Informasi kontak resmi APK Premium: WhatsApp, email, dan formulir sederhana." />
       </Helmet>
 
@@ -21,7 +21,7 @@ export default function ContactUs() {
           className="flex items-center gap-3 text-[#0EA5E9] hover:text-[#0284c7] transition-colors"
         >
           <Phone className="w-5 h-5" />
-          <span>WhatsApp: +62 895‑4024‑69838</span>
+          <span>WhatsApp: +62 895-4024-69838</span>
         </a>
 
         {/* Email */}
